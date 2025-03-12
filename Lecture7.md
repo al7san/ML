@@ -127,5 +127,90 @@ where **C** controls the trade-off between margin maximization and classificatio
 - Difficult to interpret compared to decision trees.  
 
 ---
+# **Difference Between Hard Margin and Soft Margin in SVM**
 
-  
+Support Vector Machine (SVM) can be categorized into **Hard Margin SVM** and **Soft Margin SVM** based on how strictly it separates data.
+
+---
+
+## **1️⃣ Hard Margin SVM**  
+### **Definition:**  
+- Hard Margin SVM strictly separates classes **without allowing any misclassification**.  
+- It assumes that data is **linearly separable**.  
+
+### **Mathematical Formulation:**  
+The optimization problem aims to **maximize the margin** while ensuring all points are correctly classified:
+
+\[
+\min \frac{1}{2} ||w||^2
+\]
+
+subject to:  
+
+\[
+y_i (w^T x_i + b) \geq 1, \quad \forall i
+\]
+
+where:  
+- \( y_i \) is the class label (\(+1\) or \(-1\)),  
+- \( x_i \) is the input feature vector,  
+- \( w \) is the weight vector,  
+- \( b \) is the bias term.  
+
+### **When to Use?**  
+✔️ Works well when data is **perfectly linearly separable**.  
+✔️ Guarantees **zero misclassification**.  
+
+### **Limitations:**  
+❌ **Very sensitive to outliers**—a single misclassified point can make the model fail.  
+❌ Not applicable when data has **overlapping classes**.  
+
+---
+
+## **2️⃣ Soft Margin SVM**  
+### **Definition:**  
+- Soft Margin SVM **allows some misclassification** to improve generalization.  
+- Introduces a **slack variable** \( \xi_i \) to **handle non-linearly separable data**.  
+
+### **Mathematical Formulation:**  
+Instead of forcing all points to be perfectly separated, we allow **some violations**:
+
+\[
+\min \frac{1}{2} ||w||^2 + C \sum \xi_i
+\]
+
+subject to:  
+
+\[
+y_i (w^T x_i + b) \geq 1 - \xi_i, \quad \xi_i \geq 0, \quad \forall i
+\]
+
+where:  
+- \( \xi_i \) is the **slack variable** that allows misclassification,  
+- **C** is the **regularization parameter** that controls the trade-off between maximizing margin and minimizing errors.  
+
+### **When to Use?**  
+✔️ Works well when data is **not perfectly separable**.  
+✔️ Provides better **generalization** to new data.  
+
+### **Limitations:**  
+❌ Requires careful tuning of the **C parameter**—a very large **C** results in a model similar to Hard Margin SVM, while a small **C** allows more misclassification.  
+
+---
+
+## **Key Differences Between Hard Margin and Soft Margin SVM**  
+
+| Feature           | Hard Margin SVM | Soft Margin SVM |
+|------------------|----------------|----------------|
+| **Misclassification Allowed?** | ❌ No (strict separation) | ✅ Yes (some errors allowed) |
+| **Use Case** | Perfectly separable data | Overlapping or noisy data |
+| **Robustness to Outliers** | ❌ Very sensitive | ✅ More robust |
+| **Complexity** | ✅ Simpler | ❌ More complex (requires parameter tuning) |
+
+---
+
+## **💡 Which One Should You Use?**
+- **If your data is perfectly separable → Hard Margin SVM.**  
+- **If your data has some overlap or noise → Soft Margin SVM (recommended in most real-world cases).**
+
+---
