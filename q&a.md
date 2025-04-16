@@ -426,3 +426,101 @@ For cheating detection:
 - Use **Decision Trees/Random Forests** when interpretability is key.
 - Use **K-Means/Isolation Forest** when exploring unlabeled data.
 - Avoid complex models unless needed and interpretable.
+---
+## Naive Bayes Classifier
+
+### How It Works:
+Naive Bayes is a probabilistic classifier based on Bayes' Theorem, assuming independence among features. It calculates the posterior probability of each class given the input features and assigns the class with the highest probability.
+
+### Assumptions:
+1. Feature independence: All features are conditionally independent given the class.
+2. Equal importance: Each feature contributes equally to the outcome.
+3. Normally distributed data (in Gaussian Naive Bayes).
+
+### Example Problem:
+We have the following training data:
+
+| Weather | Exam | Study | Class |
+|---------|------|-------|-------|
+| Sunny   | Yes  | High  | Pass  |
+| Rainy   | No   | Low   | Fail  |
+| Sunny   | Yes  | Low   | Pass  |
+| Rainy   | Yes  | High  | Pass  |
+| Sunny   | No   | High  | Fail  |
+
+We want to classify the instance: `Weather=Sunny, Exam=Yes, Study=High`.
+
+**Steps:**
+- Convert categorical values to frequencies.
+- Use Bayesâ Theorem to compute:
+  
+  \[
+  P(Class|Weather, Exam, Study) \propto P(Weather|Class) * P(Exam|Class) * P(Study|Class) * P(Class)
+  \]
+
+Calculate for both Pass and Fail and pick the higher value.
+
+---
+
+## Decision Tree
+
+### How It Works:
+A Decision Tree splits data into subsets based on feature values. It selects features that best separate the data using metrics like **Information Gain** or **Gini Impurity**.
+
+### Example Problem:
+Dataset:
+
+| Age | Income | Student | Credit Rating | Buys Computer |
+|-----|--------|---------|---------------|----------------|
+| <=30 | High   | No      | Fair          | No             |
+| <=30 | High   | No      | Excellent     | No             |
+| 31â40 | High   | No      | Fair          | Yes            |
+| >40  | Medium | No      | Fair          | Yes            |
+
+### Steps:
+1. Calculate the entropy of the entire dataset.
+2. For each attribute, calculate the expected entropy after the split.
+3. Compute **Information Gain = Entropy(Parent) - Weighted Avg. Entropy(Children)**.
+4. Select the attribute with the highest gain for splitting.
+
+---
+
+## Linear Regression
+
+### How It Works:
+Linear Regression models the relationship between a dependent variable \( y \) and one or more independent variables \( x \). It fits a line \( y = mx + b \) to minimize the error.
+
+### Key Metrics:
+- **R-squared (RÂ²)**: Proportion of variance in the dependent variable explained by the model.
+- **RMSE (Root Mean Squared Error)**: Measures average error between predicted and actual values.
+
+### Example Problem:
+We have the following data:
+
+| x | y |
+|---|---|
+| 1 | 2 |
+| 2 | 3 |
+| 3 | 5 |
+| 4 | 4 |
+
+### Steps:
+1. Compute the slope \( m \) and intercept \( b \) using formulas:
+   \[
+   m = \frac{n\sum(xy) - \sum x \sum y}{n\sum x^2 - (\sum x)^2}
+   \]
+   \[
+   b = \frac{\sum y - m \sum x}{n}
+   \]
+
+2. Predict values \( \hat{y} \) using \( y = mx + b \).
+3. Compute RÂ²:
+   \[
+   R^2 = 1 - \frac{\sum (y - \hat{y})^2}{\sum (y - \bar{y})^2}
+   \]
+
+4. Compute RMSE:
+   \[
+   RMSE = \sqrt{\frac{1}{n} \sum (y - \hat{y})^2}
+   \]
+
