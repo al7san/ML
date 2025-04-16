@@ -96,6 +96,129 @@ Hyperparameter tuning refers to the process of selecting the optimal values for 
 3. **Bayesian Optimization:** Uses a probabilistic model to predict the most promising hyperparameters based on previous evaluations.
 
 ---
+---
+
+## Section 2: Training Problems and How to Avoid Them
+
+---
+
+### 1. Underfitting
+
+**Definition:**  
+Underfitting occurs when a model is too simple to capture the underlying structure of the data. It performs poorly on both the training and test datasets.
+
+**Causes:**  
+- Model is not complex enough (e.g., using linear regression for a non-linear problem).  
+- Too few features used in training.  
+- Insufficient training time.  
+- High bias.
+
+**Solutions:**  
+- Use a more complex model.  
+- Add more relevant features.  
+- Reduce regularization.  
+- Train longer or use a better optimization algorithm.
+
+---
+
+### 2. Overfitting
+
+**Definition:**  
+Overfitting happens when a model learns not only the underlying pattern but also the noise in the training data, leading to poor generalization on unseen data.
+
+**Causes:**  
+- Model is too complex.  
+- Too many features or not enough training data.  
+- Training for too many epochs.  
+- Low bias and high variance.
+
+**Solutions:**  
+- Use simpler models.  
+- Apply regularization (L1 or L2).  
+- Use cross-validation.  
+- Reduce the number of features (feature selection).  
+- Increase training data or use data augmentation.  
+- Early stopping during training.
+
+---
+
+### 3. Data Leakage
+
+**Definition:**  
+Data leakage occurs when information from outside the training dataset is used to create the model. This can lead to overly optimistic performance estimates.
+
+**Examples:**  
+- Using test data during training.  
+- Including future information in the features (e.g., using a target variable in feature engineering).
+
+**Solutions:**  
+- Ensure proper train-test split before any data preprocessing.  
+- Apply feature engineering only to training data, then replicate transformations to test data.  
+- Validate pipeline using cross-validation.
+
+---
+
+### 4. Imbalanced Data
+
+**Definition:**  
+Occurs when one class significantly outnumbers the other(s) in classification tasks. This leads to biased models that perform poorly on the minority class.
+
+**Example:**  
+In fraud detection, the number of non-fraudulent transactions may far outweigh fraudulent ones.
+
+**Solutions:**  
+- Resampling techniques: oversampling the minority class (e.g., SMOTE) or undersampling the majority class.  
+- Use algorithms that can handle imbalance (e.g., XGBoost with `scale_pos_weight`).  
+- Use performance metrics like Precision, Recall, F1-Score instead of Accuracy.
+
+---
+
+### 5. Vanishing and Exploding Gradients
+
+**Definition:**  
+Common in deep neural networks during backpropagation. Vanishing gradients make it hard to update weights; exploding gradients cause instability.
+
+**Solutions:**  
+- Use ReLU activation instead of sigmoid/tanh.  
+- Apply gradient clipping.  
+- Use proper weight initialization methods (e.g., He or Xavier initialization).  
+- Normalize inputs (e.g., batch normalization).
+
+---
+
+### 6. Overtraining
+
+**Definition:**  
+A form of overfitting where the model continues to learn beyond the point of optimal performance on validation data.
+
+**Detection:**  
+- Training loss keeps decreasing, but validation loss increases.
+
+**Solutions:**  
+- Early stopping.  
+- Monitor validation performance.  
+- Use dropout or other regularization techniques.
+
+---
+
+### 7. Poor Convergence
+
+**Definition:**  
+Occurs when the model struggles to minimize the loss function effectively, often due to poor hyperparameter choices or non-optimal data preprocessing.
+
+**Solutions:**  
+- Adjust learning rate.  
+- Use advanced optimizers (e.g., Adam instead of SGD).  
+- Normalize/standardize input features.  
+- Fine-tune initialization or architecture.
+
+---
+
+## Conclusion
+
+Training a machine learning model requires balancing complexity, choosing appropriate data and features, and careful tuning. Avoiding the issues above is crucial to ensure that models generalize well to new, unseen data.
+
+---
 
 ## 4 Scenario:
 A school suspects some students are cheating during exams. The school collects data such as:
