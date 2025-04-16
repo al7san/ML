@@ -22,8 +22,7 @@
 
 This diagram shows how model complexity affects bias and variance:
 
-<img src="pic/Bias-Variance_Tradeoff.png" alt="Bias-Variance Tradeoff" width="400">
-
+<img src="Lpic/Bias-Variance_Tradeoff.png" alt="Bias-Variance Tradeoff" width="400">
 ---
 
 # 📉 Local Minima vs. Global Minima and Convergence in Algorithms
