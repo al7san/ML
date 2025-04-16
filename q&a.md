@@ -219,6 +219,99 @@ Occurs when the model struggles to minimize the loss function effectively, often
 Training a machine learning model requires balancing complexity, choosing appropriate data and features, and careful tuning. Avoiding the issues above is crucial to ensure that models generalize well to new, unseen data.
 
 ---
+---
+
+## Section 3: Algorithms and Their Characteristics
+
+---
+
+### Advantages and Disadvantages of Common Algorithms:
+
+| Algorithm             | Advantages                                                                 | Disadvantages                                                                 |
+|-----------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| **K-Nearest Neighbors (KNN)** | - Simple and easy to understand<br>- No training phase (lazy learner)<br>- Works well with clear patterns | - Slow prediction with large datasets<br>- Sensitive to noise and feature scales<br>- Poor with high-dimensional data |
+| **K-Means**           | - Fast and efficient for clustering<br>- Performs well with distinct groups | - Requires predefined number of clusters<br>- Sensitive to outliers<br>- Assumes spherical clusters |
+| **Decision Tree**     | - Easy to interpret and visualize<br>- Handles both categorical and numerical data<br>- Minimal preprocessing | - Prone to overfitting<br>- Can be unstable with slight data changes |
+| **Naive Bayes**       | - Very fast for training and prediction<br>- Performs well on high-dimensional data<br>- Effective in text classification | - Strong independence assumption among features<br>- Performance degrades if features are correlated |
+| **Neural Networks**   | - Can model complex nonlinear relationships<br>- Great for image, audio, and text data | - Requires large datasets<br>- Computationally expensive<br>- Less interpretable ("black box") |
+| **Support Vector Machine (SVM)** | - Effective in high-dimensional spaces<br>- Robust against overfitting (with proper kernel) | - Not efficient for very large datasets<br>- Difficult to interpret<br>- Requires careful kernel selection |
+
+---
+
+### How does K-Means work?
+
+**K-Means Clustering** is an unsupervised algorithm that partitions data into **K clusters** based on similarity.
+
+**Steps:**
+1. Choose the number of clusters **K**.
+2. Randomly initialize **K centroids**.
+3. Assign each point to the nearest centroid using Euclidean distance.
+4. Recalculate centroids by computing the mean of points in each cluster.
+5. Repeat steps 3–4 until centroids stabilize (no further changes or convergence).
+
+**Centroid Calculation:**
+\[
+\text{Centroid} = \frac{1}{n} \sum_{i=1}^{n} x_i
+\]
+
+---
+
+### What is the role of a Confusion Matrix?
+
+A **Confusion Matrix** evaluates the performance of a classification model by comparing actual and predicted values.
+
+|                       | Predicted Positive | Predicted Negative |
+|-----------------------|--------------------|--------------------|
+| **Actual Positive**   | True Positive (TP) | False Negative (FN) |
+| **Actual Negative**   | False Positive (FP) | True Negative (TN) |
+
+**Metrics derived:**
+
+- **Precision:**
+  \[
+  \text{Precision} = \frac{TP}{TP + FP}
+  \]
+  Measures the proportion of correct positive predictions.
+
+- **Recall:**
+  \[
+  \text{Recall} = \frac{TP}{TP + FN}
+  \]
+  Measures how many actual positives were correctly predicted.
+
+- **Accuracy:**
+  \[
+  \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+  \]
+
+---
+
+### How does Naive Bayes Classifier work? What are its assumptions?
+
+**Naive Bayes** is a probabilistic classifier based on **Bayes’ Theorem**.
+
+**Bayes' Theorem:**
+\[
+P(C|X) = \frac{P(X|C) \cdot P(C)}{P(X)}
+\]
+Where:
+- \( C \): Class
+- \( X \): Features
+
+**How it works:**
+1. Calculates the prior probability for each class.
+2. Computes the likelihood of features given each class.
+3. Applies Bayes' theorem to estimate the posterior probability of each class.
+4. Predicts the class with the highest probability.
+
+**Main assumption:**
+- **Conditional independence** among features — each feature contributes independently to the outcome. This is why it's called *naive*.
+
+**Works well when:**
+- Features are approximately independent.
+- Data is high-dimensional (e.g., spam detection, text classification).
+
+---
 
 ## 4 Scenario:
 A school suspects some students are cheating during exams. The school collects data such as:
