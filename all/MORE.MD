@@ -81,38 +81,33 @@ Follow these steps to train a linear model, predict, and quantify its performanc
 
 1. **Likelihood Function**  
    Given data \(\mathcal{D} = \{x_1, x_2, \dots, x_N\}\) and a parametric model \(p(x \mid \theta)\), define the likelihood:
-   $$
-   L(\theta)
+   $$(\theta)
    = P(\mathcal{D} \mid \theta)
    = \prod_{i=1}^{N} p(x_i \mid \theta).
    $$
 
 2. **Log‑Likelihood**  
    It’s more convenient to maximize the log of the likelihood:
-   $$
-   \ell(\theta)
+   $$ell(\theta)
    = \log L(\theta)
    = \sum_{i=1}^{N} \log p(x_i \mid \theta).
    $$
 
 3. **MLE Estimate**  
    The MLE of \(\theta\) is
-   $$
-   \hat{\theta}
+   $$hat{\theta}
    = \arg\max_{\theta}\,L(\theta)
    = \arg\max_{\theta}\,\ell(\theta).
    $$
 
 4. **Example (Gaussian Mean)**  
-   If \(x_i \sim \mathcal{N}(\mu, \sigma^2)\) with known \(\sigma^2\), the log‑likelihood is
-   $$
-   \ell(\mu)
+   If \$(x_i \sim \mathcal{N}(\mu, \sigma^2)\)$ with known \(\sigma^2\), the log‑likelihood is
+   $$ell(\mu)
    = -\frac{N}{2}\log(2\pi\sigma^2)
      -\frac{1}{2\sigma^2}\sum_{i=1}^N (x_i - \mu)^2.
    $$
    Maximizing this w.r.t. \(\mu\) yields
-   $$
-   \hat{\mu}
+   $$hat{\mu}
    = \frac{1}{N}\sum_{i=1}^N x_i
    $$  
    — the sample mean.
@@ -131,16 +126,14 @@ The **Expectation–Maximization (EM)** algorithm is an iterative method for fin
 
 1. **E‑Step (Expectation)**  
    Compute the expected value of the **complete‑data log‑likelihood**, using the current parameter estimate \(\theta^{(t)}\):  
-   $$
-   Q\bigl(\theta \mid \theta^{(t)}\bigr)
+   $$Q\bigl(\theta \mid \theta^{(t)}\bigr)
    = \mathbb{E}_{Z\mid X,\theta^{(t)}}\bigl[\log p(X,Z\mid \theta)\bigr],
    $$  
    where \(X\) is the observed data and \(Z\) are the latent variables.
 
 2. **M‑Step (Maximization)**  
    Maximize this expectation to update the parameters:  
-   $$
-   \theta^{(t+1)}
+   $$theta^{(t+1)}
    = \arg\max_{\theta}\;Q\bigl(\theta \mid \theta^{(t)}\bigr).
    $$
 
