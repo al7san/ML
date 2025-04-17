@@ -28,35 +28,34 @@ under the **conditional independence** assumption: each feature \(x_i\) is indep
 - **Limited Expressiveness**: Cannot model feature interactions or complex decision boundaries.
 
 ---
+
 ## 🤖 How the Naive Bayes Classifier Works & Its Core Assumptions
 
 ### 🔄 Working Principle
 
 1. **Bayes’ Theorem**  
-   For a sample with features \(\mathbf{x} = [x_1, \dots, x_n]\) and a class \(y\), we compute the posterior probability:
-   $$
-   P(y \mid \mathbf{x})
+   For a sample with features \$(\mathbf{x} = [x_1, \dots, x_n]\)$ and a class \(y\), we compute the posterior probability:
+   $$P(y \mid \mathbf{x})
    = \frac{P(y)\,\prod_{i=1}^{n} P(x_i \mid y)}{P(\mathbf{x})}
    \;\propto\; P(y)\,\prod_{i=1}^{n} P(x_i \mid y)
    $$
 2. **Estimate Priors**  
-   - \(P(y)\) is estimated from training data as the fraction of samples in class \(y\).
+   - \$(P(y)\)$ is estimated from training data as the fraction of samples in class \(y\).
 
 3. **Estimate Likelihoods**  
-   - For each feature \(x_i\):
-     - **Categorical**: \(P(x_i \mid y)\) is estimated by relative frequency.
-     - **Continuous** (Gaussian NB): assume \(x_i \mid y \sim \mathcal{N}(\mu_{iy}, \sigma_{iy}^2)\), so
-       $$
-       P(x_i \mid y)
+   - For each feature \$(x_i\)$:
+     - **Categorical**: \$(P(x_i \mid y)\)$ is estimated by relative frequency.
+     - **Continuous** (Gaussian NB): assume \$(x_i \mid y \sim \mathcal{N}(\mu_{iy}, \sigma_{iy}^2)\)$, so
+     - /
+       $$P(x_i \mid y)
        = \frac{1}{\sqrt{2\pi\sigma_{iy}^2}}
          \exp\!\biggl(-\tfrac{(x_i - \mu_{iy})^2}{2\sigma_{iy}^2}\biggr).
        $$
 
 4. **Compute Posteriors & Predict**  
-   - For each class \(y\), compute the (log) posterior \(\log P(y) + \sum_i \log P(x_i \mid y)\).  
+   - For each class \$(y\)$, compute the (log) posterior \$(\log P(y) + \sum_i \log P(x_i \mid y)\)$.  
    - **Predict** the class with the highest posterior:
-     $$
-     \hat y = \arg\max_{y}\;P(y)\,\prod_{i=1}^n P(x_i \mid y).
+     $$hat y = \arg\max_{y}\;P(y)\,\prod_{i=1}^n P(x_i \mid y).
      $$
 
 ---
@@ -65,8 +64,7 @@ under the **conditional independence** assumption: each feature \(x_i\) is indep
 
 1. **Conditional Independence**  
    - Given the class \(y\), features \(x_i\) are assumed independent:
-     $$
-     P(x_i, x_j \mid y)
+     $$P(x_i, x_j \mid y)
      = P(x_i \mid y)\;P(x_j \mid y)
      \quad\forall i \neq j.
      $$
