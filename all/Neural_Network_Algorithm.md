@@ -142,7 +142,7 @@ The **Softmax** function converts a vector of raw scores (logits) into a probabi
 Given a logit vector $mathbf{z} = [z_1, z_2, \dots, z_K]$, the Softmax output for class $i$ is:
 
 
-
+<img src="../pic/softmax.png" alt="sotfmax" width="200">
 
 ---
 
