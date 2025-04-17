@@ -28,9 +28,10 @@ KNN is a **non‑parametric**, instance‑based learning algorithm used for clas
 
 2. **Choose a Distance Metric**  
    - **Euclidean** (most common):  
-     $$d(x, x_i)
-     = \sqrt{\sum_{j=1}^{n} (x_j - x_{i,j})^2}
-     $$
+    $$d(f_i, f_j)
+= \sqrt{\(l_i - l_j)^2 \+\ (w_i - w_j)^2\}
+$$
+
    - **Manhattan**: $d(x,x_i)=\sum_j |x_j - x_{i,j}|$, etc.
 
 3. **Select $K$**  
